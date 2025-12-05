@@ -1,0 +1,26 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+
+
+
+@theme{
+    --font-inter: 'Inter', sans-serif;
+}
+
+body{
+    min-height: 100vh;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+::-webkit-scrollbar {
+    width: 6px;
+}
+::-webkit-scrollbar-thumb {
+    background-color: rgba(100, 100, 100, 0.5);
+    border-radius: 5px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(100, 100, 100, 0.7);
+}
