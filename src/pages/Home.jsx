@@ -10,7 +10,7 @@ import { useNavigate } from 'react-router'
 import {useState,useEffect} from 'react'
 import api from '../api/api';
 import { showError,showSuccess } from '../utils/notify';
-export default function Home({toggleSearch}) {
+export default function Home() {
   const [dsDM,setDsDM]=useState([]);
   const [dsSP,setDsSP]=useState([]);
   const navigate = useNavigate();
@@ -56,7 +56,7 @@ export default function Home({toggleSearch}) {
 
   return (
     <>
-    <Header toggleSearch={toggleSearch}/>
+    <Header />
     <div className=' h-auto w-[80%] m-auto flex flex-col text-gray-950  items-center text-3xl font-bold max-md:w-full'>
         <Banner title={null} type={1}/>
         <SmIntro />

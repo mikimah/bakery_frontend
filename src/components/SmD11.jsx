@@ -150,13 +150,33 @@ function SmD11(){
             </button>
         </div>
         
-        <form className='w-[95%] m-auto '
+        <form className='w-[95%] m-auto'
         onSubmit={handleSubmit}>
-            <input type="search"
-            onChange={(e)=>{setSearch(e.target.value)}}
-            placeholder='Tìm kiếm sản phẩm...'
-            className='border-gray-300 border w-full p-2 rounded-[5px] '
-            />
+            <div className='flex items-center gap-2 '>
+                <div className='flex-1 relative'>
+                    <input 
+                    type="search"
+                    value={search}
+                    onChange={(e) => {
+                        const value = e.target.value;
+                        setSearch(value);
+
+                        if (value === "") {
+                            getAllItems();
+                        }
+                    }}
+                    placeholder='Tìm kiếm sản phẩm...'
+                    className='border-gray-300 border w-full p-2  rounded-[5px]'
+                    />
+
+                </div>
+                <button 
+                type="submit"
+                className='bg-amber-400 hover:bg-amber-500 text-white font-bold py-2 px-4 rounded-[5px] duration-200'
+                >
+                    Tìm kiếm
+                </button>
+            </div>
         </form>
 
         <div className=' w-[95%] h-[72%] m-auto mt-5 '>

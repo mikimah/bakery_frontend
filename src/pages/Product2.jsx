@@ -9,7 +9,7 @@ import {useState,useEffect} from 'react'
 import api from '../api/api';
 import { showError,showSuccess } from '../utils/notify';
 import { useParams } from 'react-router';
-function Product2({toggleSearch}){
+function Product2(){
     const { addToCart } = useCart();
     const {loading} = useAuth();
     const { id } = useParams();
@@ -144,7 +144,7 @@ function Product2({toggleSearch}){
     
     if(loading) return <Loading/>;
     return (<>
-        <Header toggleSearch={toggleSearch} />
+        <Header />
         <div className=' h-auto w-[80%] m-auto flex flex-col text-gray-950  items-center text-3xl font-bold max-md:w-full'>
             <Banner title={[`${name}`,"Sản phẩm"]} type={2} />
             {renderSanPham(item)}

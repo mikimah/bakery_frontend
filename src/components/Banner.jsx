@@ -18,7 +18,7 @@ function Banner({title,type}) {
             return(
                 <>
                     <p className="font-extrabold font-inter text-4xl absolute top-[50%] left-[50%] transform -translate-x-1/2 -translate-y-1/2">{title[0]}</p>
-                    <p className="font-light font-inter text-xl absolute top-[64%] left-[50%] transform -translate-x-1/2 -translate-y-1/2">{title[1]}</p>
+                    <p className="whitespace-nowrap font-light font-inter text-xl absolute top-[64%] left-[50%] transform -translate-x-1/2 -translate-y-1/2">{title[1]}</p>
                 </>
             );
         }else{

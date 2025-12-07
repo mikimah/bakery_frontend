@@ -3,21 +3,23 @@ import {  useState } from 'react';
 import {Link,useNavigate} from 'react-router';
 import { useAuth } from '../context/AuthContext';
 import { useCart } from "../context/CartContext.jsx";
+import {useSearch} from '../context/SearchContext.jsx';
 import api from '../api/api';
 import { showError, showSuccess } from '../utils/notify';
 
 
-export default function Header({toggleSearch}) {
+export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const  [isSearchOpen, setIsSearchOpen] = useState(false);
   const {user,clearAuthState} = useAuth();
+  const {setIsLoading, isLoading} = useSearch();
   const {getQtyAll} = useCart();
   const navigate = useNavigate();
 
 
   function handleSearchClick() {
-    setIsSearchOpen(!isSearchOpen);
-    toggleSearch();
+    setIsLoading(!isLoading);
+    
   }
 
   async function handleLogout() {
@@ -41,7 +43,7 @@ export default function Header({toggleSearch}) {
         <div className="flex justify-between items-center py-4  relative">
 
           {
-            isSearchOpen &&<div className='z-40 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-screen h-full bg-black/50'></div>
+            isLoading &&<div className='z-40 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-screen h-full bg-black/50'></div>
           }
           
 
@@ -74,7 +76,7 @@ export default function Header({toggleSearch}) {
             onClick={handleSearchClick}
               className="p-2 z-50 hover:bg-gray-100 bg-white rounded-full transition hidden md:block hover:cursor-pointer">
               {
-              isSearchOpen ? 
+              isLoading ? 
               <X className="text-gray-700" size={20} /> : 
               <Search className="text-gray-700" size={20} />
               }

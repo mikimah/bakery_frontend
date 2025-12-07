@@ -9,7 +9,7 @@ import api from '../api/api';
 import { use, useState } from "react";
 import { useNavigate } from "react-router";
 
-function Cart({toggleSearch}) {
+function Cart() {
     const navigate = useNavigate();
     const { cart,removeFromCart,increaseQty,decreaseQty,clearCart} = useCart();
     const { user } = useAuth();
@@ -75,7 +75,7 @@ function Cart({toggleSearch}) {
 
 
     return(<>
-    <Header toggleSearch={toggleSearch}/>
+    <Header />
     <div className=' h-auto w-[80%] m-auto flex flex-col text-gray-950  items-center text-3xl font-medium max-md:w-full'>
         <Banner title={["Cart","Giỏ hàng"]} type={2} />
         <table className="w-full mt-8 ">

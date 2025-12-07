@@ -46,7 +46,7 @@ function SideBar({handleSetPage,page}) {
 
             {/* Navigation Links */}
             <div className=" w-full flex flex-col p-1 font-bold text-xl gap-1">
-                <h1 className="font-bold text-xl mb-5 ml-2">Ứng dụng</h1>
+                <h1 className="font-bold text-xl mb-5 ml-2">Quản lý</h1>
                 <button onClick={()=>handleSetNum(1)} className={`${num == 1?'bg-gray-300':null} py-2 px-4 rounded-2xl hover:cursor-pointer hover:bg-gray-200 flex items-center gap-6 duration-75`}>
                     <Package  size={30} />
                     Nội dung

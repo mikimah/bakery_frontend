@@ -8,7 +8,7 @@ import {useAuth} from '../context/AuthContext';
 import {useState,useEffect} from 'react'
 import api from '../api/api';
 import { showError,showSuccess } from '../utils/notify';
-function Product({toggleSearch}) {
+function Product() {
     const {loading} = useAuth();
     const [dsDM,setDsDM]=useState([]);
 
@@ -38,7 +38,7 @@ function Product({toggleSearch}) {
 
     return(
         <>
-            <Header toggleSearch={toggleSearch} />
+            <Header  />
                <div className=' h-auto w-[80%] m-auto flex flex-col text-gray-950  items-center text-3xl font-bold max-md:w-full'>
                 <Banner title={["Product","Sản phẩm"]} type={2} />
                 <DanhMucMenu items={dsDM}/>

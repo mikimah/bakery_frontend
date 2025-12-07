@@ -2,10 +2,10 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 import {CircleCheck} from 'lucide-react';
 
-function CheckOut({toggleSearch}) {
+function CheckOut() {
   return (
     <>
-      <Header toggleSearch={toggleSearch}/>
+      <Header />
       <div className='h-auto w-[80%] m-auto flex flex-col text-gray-950 items-center justify-center text-center py-20 max-md:w-full'>
         <div className='flex flex-col items-center gap-6'>
           <div className='text-6xl'>

@@ -4,7 +4,7 @@ import Banner from "../components/Banner";
 import SmAboutUs from "../components/SmAboutUs";
 import {useAuth} from '../context/AuthContext';
 import Loading from "../components/Loading";
-function AboutUs({ toggleSearch }) {
+function AboutUs() {
     const contents = [
         {title:"Hương Vị Từ Trái Tim",
         msg:"Tiệm bánh của chúng tôi được thành lập với mong muốn mang đến những chiếc bánh thơm ngon, chất lượng và đầy ắp tình yêu thương. Từ những nguyên liệu tươi mới, chọn lọc kỹ càng, mỗi chiếc bánh đều được làm ra bằng sự tận tâm và niềm đam mê của người thợ. Chúng tôi tin rằng hương vị ngọt ngào không chỉ làm no bụng mà còn mang lại niềm vui và sự ấm áp cho mỗi khách hàng.",
@@ -25,7 +25,7 @@ function AboutUs({ toggleSearch }) {
     if(loading) return <Loading/>;
     return(
         <>
-        <Header toggleSearch={toggleSearch}/>
+        <Header />
         <div className=' h-auto w-[80%] m-auto flex flex-col text-gray-950  items-center text-3xl font-bold max-md:w-full'>
             <Banner title={["About us","Về Chúng Tôi"]} type={2}/>
             <SmAboutUs type={1} title={contents[0].title} msg={contents[0].msg} img={contents[0].img} />
