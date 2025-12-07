@@ -28,9 +28,21 @@ function SmD11(){
             showError("Có lỗi xảy ra");
         }
     }
-    function handleSubmit(e){
+
+    async function handleSearch(e){
         e.preventDefault();
-        console.log(search);
+        if(search.trim()===""){
+            return;
+        }
+        try{
+            const response = await api.get(`/product/name/${search.trim()}`);
+            if(response.data.status === 200){
+                setItems(response.data.items);
+            }
+        }catch(e){
+            console.log(e);
+            showError("Có lỗi xảy ra khi tìm kiếm");
+        }
     }
     async function handleAdd(e){
         e.preventDefault();
@@ -151,7 +163,7 @@ function SmD11(){
         </div>
         
         <form className='w-[95%] m-auto'
-        onSubmit={handleSubmit}>
+        onSubmit={handleSearch}>
             <div className='flex items-center gap-2 '>
                 <div className='flex-1 relative'>
                     <input 
@@ -172,9 +184,9 @@ function SmD11(){
                 </div>
                 <button 
                 type="submit"
-                className='bg-amber-400 hover:bg-amber-500 text-white font-bold py-2 px-4 rounded-[5px] duration-200'
+                className='hover:cursor-pointer bg-amber-400 hover:bg-amber-500 text-white font-bold py-2 px-4 rounded-[5px] duration-200'
                 >
-                    Tìm kiếm
+                    Tìm kiếm 
                 </button>
             </div>
         </form>

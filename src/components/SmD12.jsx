@@ -19,9 +19,20 @@ function SmD12(){
         setUpdate(!update);
      }
 
-    function handleSubmit(e){
-        e.preventDefault();
-        console.log(search);
+    async function handleSearch(e){
+            e.preventDefault();
+        if(search.trim()===""){
+            return;
+        }
+        try{
+            const response = await api.get(`/category/name/${search.trim()}`);
+            if(response.data.status === 200){
+                setItems(response.data.items);
+            }
+        }catch(e){
+            console.log(e);
+            showError("Có lỗi xảy ra khi tìm kiếm");
+        }
     }
 
     async function handleAdd(e){
@@ -130,13 +141,33 @@ function SmD12(){
             </button>
         </div>
         
-        <form className='w-[95%] m-auto '
-        onSubmit={handleSubmit}>
-            <input type="search"
-            onChange={(e)=>{setSearch(e.target.value)}}
-            placeholder='Tìm kiếm sản phẩm...'
-            className='border-gray-300 border w-full p-2 rounded-[5px] '
-            />
+        <form className='w-[95%] m-auto'
+        onSubmit={handleSearch}>
+            <div className='flex items-center gap-2 '>
+                <div className='flex-1 relative'>
+                    <input 
+                    type="search"
+                    value={search}
+                    onChange={(e) => {
+                        const value = e.target.value;
+                        setSearch(value);
+
+                        if (value === "") {
+                            getAllItems();
+                        }
+                    }}
+                    placeholder='Tìm kiếm danh mục...'
+                    className='border-gray-300 border w-full p-2  rounded-[5px]'
+                    />
+
+                </div>
+                <button 
+                type="submit"
+                className='hover:cursor-pointer bg-amber-400 hover:bg-amber-500 text-white font-bold py-2 px-4 rounded-[5px] duration-200'
+                >
+                    Tìm kiếm 
+                </button>
+            </div>
         </form>
 
         <div className='w-[95%] h-[72%] m-auto mt-5'>
@@ -273,6 +304,7 @@ function SmD12(){
             </form>
         </div>    
         }
+
         {del&&
         <div className='flex items-center justify-center w-full h-full bg-black/30 fixed top-0 left-0 right-0 bottom-0 z-50'>
             <div className='bg-white w-[90%] max-w-[400px] rounded-lg shadow-2xl py-8 px-6 flex flex-col gap-6'>
