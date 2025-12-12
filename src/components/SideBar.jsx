@@ -1,12 +1,13 @@
-import {Package,User,Database} from 'lucide-react'
+import {Package,StickyNote,Database} from 'lucide-react'
 import { useState } from 'react';
 import { useAuth } from '../context/AuthContext';
-import api from '../api/api';
+import { ClipLoader } from 'react-spinners';
 import { showError, showSuccess } from '../utils/notify';
 
 function SideBar({handleSetPage,page}) {
     const [num,setNum]=useState(page);
     const {user,clearAuthState} = useAuth();
+    const [isLoggingOut, setIsLoggingOut] = useState(false);
     function handleSetNum(x){
       setNum(x);
       handleSetPage(x);
@@ -15,16 +16,12 @@ function SideBar({handleSetPage,page}) {
 
     
     async function handleLogout() {
-    try{
-      const response = await api.post('logout');
-      if(response.data.status==200){
-        showSuccess(response.data.message);
-        clearAuthState();
-        navigate('/');
-      }
-    }catch(e){
-      showError(e.response.data.message); 
-    }
+    setIsLoggingOut(true);
+    setTimeout(() => {
+      showSuccess("Đăng xuất thành công");
+      clearAuthState();
+      navigate('/login');
+    }, 1000);
   }
     return (
         <div className="bg-white w-full h-full flex flex-col items-center justify-between font-inter shadow-2xl ">
@@ -51,14 +48,16 @@ function SideBar({handleSetPage,page}) {
                     <Package  size={30} />
                     Nội dung
                 </button>
-                <button  onClick={()=>handleSetNum(2)}  className={`${num == 2?'bg-gray-300':null} py-2 px-4 rounded-2xl hover:cursor-pointer hover:bg-gray-200 flex items-center gap-6 duration-75`}>
-                    <User size={30}/>
-                    Người dùng
-                </button>
-                <a  onClick={()=>handleSetNum(3)}  className={`${num == 3?'bg-gray-300':null} py-2 px-4 rounded-2xl hover:cursor-pointer hover:bg-gray-200 flex items-center gap-6 duration-75`}>
+
+                <button  onClick={()=>handleSetNum(3)}  className={`${num == 3?'bg-gray-300':null} py-2 px-4 rounded-2xl hover:cursor-pointer hover:bg-gray-200 flex items-center gap-6 duration-75`}>
                     <Database size={30}/>
                     Thống kê
-                </a>
+                </button>
+
+                <button  onClick={()=>handleSetNum(2)}  className={`${num == 2?'bg-gray-300':null} py-2 px-4 rounded-2xl hover:cursor-pointer hover:bg-gray-200 flex items-center gap-6 duration-75`}>
+                    <StickyNote size={30}/>
+                    Bài Lab
+                </button>
             </div>
             </div>
 
@@ -78,9 +77,9 @@ function SideBar({handleSetPage,page}) {
     
           <button 
             onClick={handleLogout}
-            className={`w-full hover:cursor-pointer  bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-lg text-base duration-200 flex items-center justify-center gap-2 `}
+            className={`w-full text-center hover:cursor-pointer  bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-lg text-base duration-200 flex items-center justify-center gap-2 `}
             >
-                Đăng xuất
+                {isLoggingOut ? <ClipLoader loading={true} size={14} color="#ffffff" /> : "Đăng xuất"}
             </button>
           </div>
 

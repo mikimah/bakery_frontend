@@ -25,12 +25,12 @@ function Product2(){
 
     async function getItem() {
         try{
-            const response = await api.get(`/product/${id}`);
+            const response = await api.get(`/product/byid/${id}`);
             if(response.data.status==200){
                 setItem(response.data.item);
                 setName(response.data.item.TenSP)
                 console.log(response.data.item);
-                getAllItems(response.data.item.danh_muc.MaDM);
+                getAllItems(response.data.item.MaDM);
             }
         }catch(e){
             console.log(e);
@@ -39,7 +39,7 @@ function Product2(){
     }
     async function getAllItems(id){
         try{
-            const response = await api.get(`/product/cate/${id}`);
+            const response = await api.get(`/product/bycate/${id}`);
             if(response.data.status==200){
                 setItems(response.data.items);
                 console.log(response.data.items);

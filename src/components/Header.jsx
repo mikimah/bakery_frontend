@@ -4,16 +4,16 @@ import {Link,useNavigate} from 'react-router';
 import { useAuth } from '../context/AuthContext';
 import { useCart } from "../context/CartContext.jsx";
 import {useSearch} from '../context/SearchContext.jsx';
-import api from '../api/api';
+import { ClipLoader } from 'react-spinners';
 import { showError, showSuccess } from '../utils/notify';
 
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const  [isSearchOpen, setIsSearchOpen] = useState(false);
   const {user,clearAuthState} = useAuth();
   const {setIsLoading, isLoading} = useSearch();
   const {getQtyAll} = useCart();
+  const [isLoggingOut, setIsLoggingOut] = useState(false);
   const navigate = useNavigate();
 
 
@@ -22,17 +22,13 @@ export default function Header() {
     
   }
 
-  async function handleLogout() {
-    try{
-      const response = await api.post('logout');
-      if(response.data.status==200){
-        showSuccess(response.data.message);
-        clearAuthState();
-        navigate('/');
-      }
-    }catch(e){
-      showError(e.response.data.message); 
-    }
+  function handleLogout() {
+    setIsLoggingOut(true);
+    setTimeout(() => {
+      showSuccess("Đăng xuất thành công");
+      clearAuthState();
+      navigate('/login');
+    }, 1000);
   }
 
   return (
@@ -90,8 +86,8 @@ export default function Header() {
             {user ? (
               <>
                 <span className="hidden md:block text-gray-700 font-medium">Xin chào, {user.HoTen}</span>
-                <a  onClick={()=>handleLogout()} className="hidden md:block px-4 py-2 bg-gradient-to-r from-amber-400 to-orange-400 hover:from-amber-500 hover:to-orange-500 text-white font-medium rounded-lg transition">
-                Đăng xuất
+                <a  onClick={()=>handleLogout()} className="hidden w-27  text-center md:block px-4 py-2 bg-gradient-to-r from-amber-400 to-orange-400 hover:from-amber-500 hover:to-orange-500 text-white font-medium rounded-lg transition">
+                {isLoggingOut ? <ClipLoader loading={true} size={14} color="#ffffff" /> : "Đăng xuất"}
                 </a>
               </> 
             ) : (

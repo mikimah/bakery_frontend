@@ -7,7 +7,7 @@ function DanhMucPart({item}){
     const [items,setItems]=useState([]);
     async function getItems(id) {
         try{
-            const response = await api.get(`/product/cate/${id}`);
+            const response = await api.get(`/product/bycate/${id}`);
             if(response.data.status==200){
                 console.log(response.data.items);
                 setItems(response.data.items);
@@ -38,7 +38,7 @@ function DanhMucPart({item}){
     useEffect(()=>{getItems(id);},[]);
     return(<div 
     id={`section${item.MaDM}`}
-    className="w-full h-[40rem] relative ">
+    className="w-full min-h-[40rem] relative ">
         <div className="w-full h-auto flex flex-col items-center justify-center gap-3">
             <div className="w-full  h-auto flex items-center justify-center gap-4">
                 <hr className="w-[10%] border border-amber-500"/>

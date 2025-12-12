@@ -39,7 +39,7 @@ function Dash3(){
         console.log("Ngày bắt đầu:", startDate);
         console.log("Ngày kết thúc:", endDate);
         try{
-            const response = await api.get(`/order/search`, {
+            const response = await api.get(`/order/bydate/`, {
                 params: {
                     startDate,
                     endDate
@@ -173,7 +173,7 @@ function Dash3(){
                                     <td className="col-span-1 p-2 flex items-center justify-center">
                                      <button
                                         className="bg-blue-500 rounded-[5px]  text-white p-2 flex items-center justify-center gap-2 duration-75 hover:scale-[1.1] hover:cursor-pointer"
-                                        onClick={()=>{setInfo(item);}}
+                                        onClick={()=>{setInfo(item);console.log(item);}}
                                     >
                                         Xem <Info size={20} />
                                     </button>
@@ -238,9 +238,9 @@ function Dash3(){
                         </tr>
                     </thead>
                     <tbody className='divide-y divide-gray-300'>
-                        {info?.chi_tiet_don_hang && info.chi_tiet_don_hang.map((product, index) => (
+                        {info?.ChiTietDonHang && info.ChiTietDonHang.map((product, index) => (
                             <tr key={index} className='bg-white hover:bg-gray-50'>
-                                <td className='p-3 text-gray-800'>{product.san_pham.TenSP}</td>
+                                <td className='p-3 text-gray-800'>{product.TenSP}</td>
                                 <td className='p-3 text-center text-gray-800'>{product.SoLuong}</td>
                                 <td className='p-3 text-right text-gray-800'>{new Intl.NumberFormat('vi-VN').format(product.DonGia)}đ</td>
                                 <td className='p-3 text-right font-bold text-gray-800'>{new Intl.NumberFormat('vi-VN').format(product.SoLuong * product.DonGia)}đ</td>
@@ -256,8 +256,8 @@ function Dash3(){
             <div className='text-right'>
                 <p className='text-gray-600 mb-2'>Tổng cộng:</p>
                 <p className='text-2xl font-bold text-amber-600'>
-                    {info?.chi_tiet_don_hang && new Intl.NumberFormat('vi-VN').format(
-                        info.chi_tiet_don_hang.reduce((sum, p) => sum + (p.SoLuong * p.DonGia), 0)
+                    {info?.ChiTietDonHang && new Intl.NumberFormat('vi-VN').format(
+                        info.ChiTietDonHang.reduce((sum, p) => sum + (p.SoLuong * p.DonGia), 0)
                     )}đ
                 </p>
             </div>

@@ -35,7 +35,7 @@ function SmD11(){
             return;
         }
         try{
-            const response = await api.get(`/product/name/${search.trim()}`);
+            const response = await api.get(`/product/Byname/${search.trim()}`);
             if(response.data.status === 200){
                 setItems(response.data.items);
             }
@@ -53,7 +53,7 @@ function SmD11(){
             formData.append("price",price);
             formData.append("image",image);
 
-            const response = await api.post('/product',formData,{
+            const response = await api.post('/product/add',formData,{
                 headers: { "Content-Type": "multipart/form-data" }
             });
 
@@ -85,7 +85,7 @@ function SmD11(){
 
     async function handleDelete(idx) {
         try{
-            const response = await api.delete(`/product/${idx}`);
+            const response = await api.post(`/product/delete/${idx}`);
             if(response.data.status==200){
                 showSuccess(response.data.message);
                 getAllItems();
@@ -117,7 +117,7 @@ function SmD11(){
             formData.append("image", image);
             }
 
-            const response = await api.post(`/product/${id}`,formData,{
+            const response = await api.post(`/product/update/${id}`,formData,{
                 headers: { "Content-Type": "multipart/form-data" }
             });
 

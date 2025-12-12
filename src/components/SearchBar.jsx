@@ -25,7 +25,7 @@ function SearchBar() {
         setIsLoading(true);
         
         try{
-            const response = await api.get(`/product/name/${searchTerm}`);
+            const response = await api.get(`/product/byname/${searchTerm}`);
             if(response.data.status === 200){
                 console.log(response.data.items);
                 updateSearchResults(response.data.items, searchTerm);

@@ -80,7 +80,7 @@ export default function Register() {
                   className={` ${error.name && 'border-red-500'} w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-400 focus:border-transparent`}
                   placeholder="Họ tên của bạn"
                 />
-                {error.name && <p className="text-red-500 text-sm mt-1">{error.name[0]}</p>}
+                {error.name && <p className="text-red-500 text-sm mt-1">{error.name}</p>}
               </div>
 
               <div>
@@ -95,7 +95,7 @@ export default function Register() {
                   className={`${error.email&&'border-red-500'} w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-400 focus:border-transparent`}
                   placeholder="your@email.com"
                 />
-                {error.email && <p className="text-red-500 text-sm mt-1">{error.email[0]}</p>}
+                {error.email && <p className="text-red-500 text-sm mt-1">{error.email}</p>}
               </div>
 
               <div>
@@ -110,7 +110,7 @@ export default function Register() {
                   className={`${error.password&& 'border-red-500'} w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-400 focus:border-transparent`}
                   placeholder="••••••••"
                 />
-                {error.password && <p className="text-red-500 text-sm mt-1">{error.password[0]}</p>}
+                {error.password && <p className="text-red-500 text-sm mt-1">{error.password}</p>}
               </div>
 
               <div>

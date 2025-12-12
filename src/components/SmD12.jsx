@@ -25,7 +25,7 @@ function SmD12(){
             return;
         }
         try{
-            const response = await api.get(`/category/name/${search.trim()}`);
+            const response = await api.get(`/category/byname/${search.trim()}`);
             if(response.data.status === 200){
                 setItems(response.data.items);
             }
@@ -72,7 +72,7 @@ function SmD12(){
         }
 
         try{
-            const response = await api.post(`/category/${id}`,formData,
+            const response = await api.post(`/category/update/${id}`,formData,
                 {
                     headers: { "Content-Type": "multipart/form-data" }
                 }
@@ -92,7 +92,7 @@ function SmD12(){
 
     async function handleDelete(idx) {
         try{
-            const response = await api.delete(`/category/${idx}`);
+            const response = await api.post(`/category/delete/${idx}`);
             if(response.data.status==200){
                 showSuccess(response.data.message);
                 getAllItems();

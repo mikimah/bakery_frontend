@@ -1,15 +1,15 @@
-
-
+import bannerImg from '../assets/bannerImg.jpg';
+import banner2Img from '../assets/banner2Img.jpg';
 
 function Banner({title,type}) {
     function renderBanner(type){
         if(type === 1){
             return(
-                <div className="w-[100%] h-[100%] bg-[url(/src/assets/bannerImg.jpg)] bg-cover bg-center"></div>
+                <div className="w-[100%] h-[100%] bg-cover bg-center" style={{backgroundImage: `url(${bannerImg})`}}></div>
             );
         }else{
             return(
-                <div className="w-[100%] h-[100%] bg-[url(/src/assets/banner2Img.jpg)] bg-cover bg-center"></div>
+                <div className="w-[100%] h-[100%] bg-cover bg-center" style={{backgroundImage: `url(${banner2Img})`}}></div>
             );
         }
     }

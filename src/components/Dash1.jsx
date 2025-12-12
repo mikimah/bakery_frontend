@@ -24,10 +24,6 @@ function Dash1(){
                 <Tag size={30}/>
                 Danh mục
             </button>
-            <button onClick={()=>handleSetFunc(3)} className={`${func == 3 ? 'text-amber-500 border-b-amber-500 ' : 'border-b-gray-500/0 hover:border-b-gray-300'}  border-b-3  hover:cursor-pointer flex items-center justify-center gap-2 p-2  w-[14%]`}  >
-                <Gift size={30}/>
-                Khuyến mãi
-            </button>
             
         </div>
         <hr className='w-[95%] m-auto border-gray-300 mb-3'/>

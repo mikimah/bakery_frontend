@@ -23,7 +23,7 @@ function Product3(){
 
     async function getItem() {
         try{
-            const response = await api.get(`/category/${id}`);
+            const response = await api.get(`/category/byid/${id}`);
             if(response.data.status==200){
                 setItem(response.data.item);
                 setName(response.data.item.TenDM)
@@ -38,7 +38,7 @@ function Product3(){
 
     async function getAllItems(id){
         try{
-            const response = await api.get(`/product/cate/${id}`);
+            const response = await api.get(`/product/bycate/${id}`);
             if(response.data.status==200){
                 setItems(response.data.items);
                 console.log(response.data.items);

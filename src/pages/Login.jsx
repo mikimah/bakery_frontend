@@ -75,7 +75,7 @@ export default function Login() {
                   placeholder="your@email.com"
     
                 />
-                {error.email && (<p className="text-red-500 text-sm mt-1">{error.email[0]}</p>)}
+                {error.email && (<p className="text-red-500 text-sm mt-1">{error.email}</p>)}
               </div>
 
               <div>
@@ -91,7 +91,7 @@ export default function Login() {
                   placeholder="••••••••"
                   
                 />
-                {error.password && (<p className="text-red-500 text-sm mt-1">{error.password[0]}</p>)}
+                {error.password && (<p className="text-red-500 text-sm mt-1">{error.password}</p>)}
               </div>
 
               {!loading ?

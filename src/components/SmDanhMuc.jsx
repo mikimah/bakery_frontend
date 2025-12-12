@@ -1,4 +1,5 @@
 import DanhMucCard from "./DanhMucCard.jsx";
+import danhMucBg from "../assets/danhMucBg.jpg";
 
 
 function SmDanhMuc({items}) {
@@ -20,7 +21,7 @@ function SmDanhMuc({items}) {
                 Xem thêm
             </a>
         </div>
-        <div className=" w-[100%] h-[100%] bg-[url(src/assets/danhMucBg.jpg)] bg-center bg-cover"> </div>
+        <div className="w-[100%] h-[100%] bg-center bg-cover" style={{backgroundImage: `url(${danhMucBg})`}}> </div>
     </div>
     
     );

@@ -55,7 +55,7 @@ function Cart() {
         });
 
         try{
-            const response = await api.post('/order',{
+            const response = await api.post('/order/add',{
                 user: user ? user.MaND : null,
                 phone,
                 address: shippingMethod === "home" ? address : "Nhận tại cửa hàng",
@@ -121,14 +121,8 @@ function Cart() {
                 )}
             </tbody>
         </table>
-        <div className="w-full mb-8 p-3 py-4 bg-gray-50 flex items-center justify-end border border-gray-200 rounded-[5px] ">
-            <form onSubmit={()=>{console.log("apdung");}} 
-            className="text-xl w-[25%]  flex items-center justify-center gap-2">
-                <input className="border border-gray-300 p-1 w-[50%] bg-white text-center rounded-[5px]"
-                placeholder="Mã giảm giá"
-                type="text" />
-                <button type="submit" className="rounded-[5px] bg-amber-400 p-1 px-3 text-white">Áp dụng</button>
-            </form>
+        <div className="w-full h-15 mb-8 p-3 py-4 bg-gray-50 flex items-center justify-end border border-gray-200 rounded-[5px] ">
+
             
         </div>
         <div className="w-full  flex  gap-4  rounded-[5px] mb-8">
